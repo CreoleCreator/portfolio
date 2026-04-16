@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Isiah — Chief Agent Officer Portfolio</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    :root {
+      --bg:       #06060a;
+      --surface:  #0d0d14;
+      --surface2: #12121c;
+      --border:   #1a1a2e;
+      --border2:  #252540;
+      --accent:   #8b5cf6;
+      --accent2:  #22d3ee;
+      --accent3:  #f59e0b;
+      --green:    #10b981;
+      --red:      #ef4444;
+      --text:     #f1f5f9;
+      --text2:    #94a3b8;
+      --text3:    #475569;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: rgba(139,92,246,0.3); }
+
+    /* ─── CURSOR GLOW ─── */
+    .cursor-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139,92,246,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s;
+      z-index: 0;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 3rem;
+      background: rgba(6,6,10,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent2);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: rgba(139,92,246,0.15);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: var(--accent) !important;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      transition: all 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: rgba(139,92,246,0.25) !important;
+      color: var(--text) !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 10rem 3rem 6rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(139,92,246,0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(34,211,238,0.06), transparent);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 80px 80px;
+      opacity: 0.3;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 100px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--green);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.06em;
+    }
+
+    .status-dot {
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+      50% { opacity: 0.6; box-shadow: 0 0 0 4px rgba(16,185,129,0); }
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--accent2);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.75rem;
+    }
+
+    .h1-name {
+      display: block;
+      color: var(--text);
+    }
+
+    .h1-title {
+      display: block;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 60%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text2);
+      max-width: 620px;
+      margin: 0 auto 3rem;
+      line-height: 1.75;
+    }
+
+    .hero-desc strong { color: var(--text); font-weight: 600; }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #6d28d9);
+      color: white;
+      box-shadow: 0 4px 30px rgba(139,92,246,0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(139,92,246,0.5);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text2);
+      border: 1px solid var(--border2);
+    }
+
+    .btn-outline:hover {
+      color: var(--text);
+      border-color: var(--text3);
+      background: var(--surface);
+    }
+
+    /* ─── STATS TICKER ─── */
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--surface);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .stat-item {
+      flex: 1;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-num {
+      display: block;
+      font-size: 2rem;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-lbl {
+      font-size: 0.72rem;
+      color: var(--text3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── SECTION BASE ─── */
+    .section {
+      padding: 7rem 3rem;
+      max-width: 1140px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header { margin-bottom: 3.5rem; }
+
+    .tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent2);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
+    }
+
+    .section-sub {
+      color: var(--text2);
+      font-size: 1rem;
+      max-width: 480px;
+    }
+
+    /* ─── PROJECTS ─── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+    }
+
+    .proj {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .proj::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.04), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .proj:hover {
+      transform: translateY(-5px);
+      border-color: var(--border2);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+    }
+
+    .proj:hover::after { opacity: 1; }
+
+    .proj-span-8 { grid-column: span 8; }
+    .proj-span-4 { grid-column: span 4; }
+    .proj-span-6 { grid-column: span 6; }
+
+    @media (max-width: 900px) {
+      .proj-span-8, .proj-span-4, .proj-span-6 { grid-column: span 12; }
+    }
+
+    .proj-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .proj-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+    }
+
+    .proj-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+
+    .status-live {
+      color: var(--green);
+      border-color: rgba(16,185,129,0.25);
+      background: rgba(16,185,129,0.06);
+    }
+
+    .status-live::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: statusPulse 2s infinite;
+    }
+
+    .status-venture {
+      color: var(--accent3);
+      border-color: rgba(245,158,11,0.25);
+      background: rgba(245,158,11,0.06);
+    }
+
+    .status-flagship {
+      color: var(--accent2);
+      border-color: rgba(34,211,238,0.25);
+      background: rgba(34,211,238,0.06);
+    }
+
+    .proj h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.75rem;
+    }
+
+    .proj p {
+      color: var(--text2);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
+
+    .proj-highlight {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.875rem 1rem;
+      margin-bottom: 1.75rem;
+      font-size: 0.82rem;
+      color: var(--text2);
+      font-style: italic;
+      border-left: 3px solid var(--accent);
+    }
+
+    .proj-highlight strong { color: var(--text); font-style: normal; }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .chip {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.22rem 0.6rem;
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text3);
+      letter-spacing: 0.03em;
+    }
+
+    /* ─── HORIZONTAL RULE ─── */
+    .hr {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    /* ─── AI STACK ─── */
+    .stack-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 7rem 3rem;
+    }
+
+    .stack-inner { max-width: 1140px; margin: 0 auto; }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.75rem;
+      margin-top: 3rem;
+    }
+
+    .model-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .model-card:hover {
+      border-color: var(--accent);
+      background: rgba(139,92,246,0.04);
+      transform: translateY(-2px);
+    }
+
+    .model-card-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .model-card-org {
+      font-size: 0.68rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text3);
+    }
+
+    .model-card-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ─── CAPABILITIES ─── */
+    .caps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .cap-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.2s;
+    }
+
+    .cap-card:hover { border-color: var(--border2); }
+
+    .cap-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .cap-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .cap-card p {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .cap-skills {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .cap-skill {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .cap-skill-name {
+      font-size: 0.78rem;
+      color: var(--text2);
+      width: 130px;
+      flex-shrink: 0;
+    }
+
+    .cap-bar {
+      flex: 1;
+      height: 3px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .cap-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      animation: growBar 1.8s cubic-bezier(0.4,0,0.2,1) forwards;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+
+    @keyframes growBar {
+      to { transform: scaleX(1); }
+    }
+
+    .cap-pct {
+      font-size: 0.72rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text3);
+      width: 32px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* ─── MANIFESTO ─── */
+    .manifesto {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .manifesto-quote {
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      font-weight: 700;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+
+    .manifesto-quote em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .manifesto-body {
+      color: var(--text2);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .manifesto-body p + p { margin-top: 1.25rem; }
+
+    .manifesto-body strong { color: var(--text); font-weight: 600; }
+
+    /* ─── WHAT I OFFER ─── */
+    .offer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .offer-item {
+      background: var(--surface);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+
+    .offer-item:hover { background: var(--surface2); }
+
+    .offer-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .offer-item h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .offer-item p {
+      font-size: 0.82rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-name {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-sub {
+      font-size: 0.8rem;
+      color: var(--text3);
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── FADE-UP ─── */
+    .fade {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── RESPONSIVE NAV ─── */
+    @media (max-width: 640px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .section { padding: 5rem 1.5rem; }
+      .hero { padding: 8rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor-glow" id="glow"></div>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">isiah.dev</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#stack">AI Stack</a></li>
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+
+    <div class="status-pill">
+      <div class="status-dot"></div>
+      Available · Chief Agent Officer
+    </div>
+
+    <div class="hero-eyebrow">AI Builder · Integrator · Operator</div>
+
+    <h1>
+      <span class="h1-name">Isiah</span>
+      <span class="h1-title">Builds with AI.</span>
+    </h1>
+
+    <p class="hero-desc">
+      I don't just <em>use</em> AI tools — I <strong>architect systems</strong> with them.
+      From Bitcoin payment infrastructure to autonomous real-estate agents to AI voice pipelines for tradesmen,
+      I ship AI-powered products that do real work for real businesses.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View My Projects ↓</a>
+      <a href="#about" class="btn btn-outline">My Philosophy</a>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <span class="stat-num">4+</span>
+        <div class="stat-lbl">Products Shipped</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">12+</span>
+        <div class="stat-lbl">LLMs Mastered</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <div class="stat-lbl">Live AI Systems</div>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">∞</span>
+        <div class="stat-lbl">Drive</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── PROJECTS ── -->
+<section class="section" id="projects">
+  <div class="section-header fade">
+    <div class="tag">// 01 — Projects</div>
+    <h2 class="section-title">What I've Built</h2>
+    <p class="section-sub">Real products, live systems, autonomous agents. Built with AI from day one.</p>
+  </div>
+
+  <div class="projects-grid fade">
+
+    <!-- BridgePay (8 cols) -->
+    <div class="proj proj-span-8">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:rgba(245,158,11,0.12); font-size:1.8rem;">₿</div>
+        <span class="proj-status status-flagship">FLAGSHIP</span>
+      </div>
+      <h3>BridgePay — Bitcoin Payment Gateway</h3>
+      <p>
+        A production-grade Bitcoin payment system built for online merchants and ecommerce stores who want
+        to accept BTC natively. BridgePay eliminates middlemen, removes chargeback risk, and brings
+        decentralised payment rails to any checkout flow — built end-to-end using AI-assisted development on Replit.
+      </p>
+      <div class="proj-highlight">
+        <strong>The proof-of-concept:</strong> A solo builder, using AI as a co-pilot, shipped a fintech product 
+        that would have taken a team months. This is what AI-native development looks like.
+      </div>
+      <div class="chips">
+        <span class="chip">Bitcoin</span>
+        <span class="chip">Replit</span>
+        <span class="chip">AI-Assisted Dev</span>
+        <span class="chip">eCommerce API</span>
+        <span class="chip">Payments Infrastructure</span>
+        <span class="chip">Vibe Coding</span>
+      </div>
+    </div>
+
+    <!-- Zionix (4 cols) -->
+    <div class="proj proj-span-4">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:rgba(139,92,246,0.12);">⚡</div>
+        <span class="proj-status status-live">LIVE</span>
+      </div>
+      <h3>Zionix — AI Operations Centre</h3>
+      <p>
+        A self-hosted AI agent dashboard built with OpenClaw. Houses multiple autonomous agents:
+        system health monitors, a real-estate lead gen agent, and an orchestration layer for
+        managing AI workloads — all running 24/7.
+      </p>
+      <div class="chips">
+        <span class="chip">OpenClaw</span>
+        <span class="chip">AI Agents</span>
+        <span class="chip">Self-Hosted</span>
+        <span class="chip">Raspberry Pi</span>
+        <span class="chip">Automation</span>
+      </div>
+    </div>
+
+    <!-- Tradie Voice AI (6 cols) -->
+    <div class="proj proj-span-6">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:rgba(34,211,238,0.1);">📞</div>
+        <span class="proj-status status-venture">VENTURE</span>
+      </div>
+      <h3>AI Voice Agents for Tradies</h3>
+      <p>
+        Co-built with my brother. AI phone agents deployed for trade businesses — starting with electricians.
+        Handles inbound calls, qualifies leads, books jobs autonomously. No receptionist needed.
+        The stack: GoHighLevel for CRM, N8N for workflow automation, Twilio for voice delivery.
+      </p>
+      <div class="proj-highlight">
+        <strong>Real impact:</strong> Replacing real admin hours with autonomous call handling —
+        while the tradie is on the tools, the AI is booking the next job.
+      </div>
+      <div class="chips">
+        <span class="chip">GoHighLevel</span>
+        <span class="chip">N8N</span>
+        <span class="chip">Twilio</span>
+        <span class="chip">Voice AI</span>
+        <span class="chip">Lead Qualification</span>
+      </div>
+    </div>
+
+    <!-- Property Lead Gen (6 cols) -->
+    <div class="proj proj-span-6">
+      <div class="proj-top">
+        <div class="proj-icon" style="background:rgba(16,185,129,0.1);">🏘️</div>
+        <span class="proj-status status-live">LIVE</span>
+      </div>
+      <h3>Property Lead Gen Agent</h3>
+      <p>
+        An autonomous AI agent that hunts motivated sellers and cash-ready investors across Brisbane North.
+        Monitors stale REA listings, failed auctions, and Facebook buyer groups — surfaces opportunities
+        on a "2 and 20" deal structure (2% management + 20% of upside). Integrated into Zionix.
+      </p>
+      <div class="chips">
+        <span class="chip">Firecrawl</span>
+        <span class="chip">Web Scraping</span>
+        <span class="chip">Brisbane Market</span>
+        <span class="chip">Autonomous Agent</span>
+        <span class="chip">REA Integration</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ── AI STACK ── -->
+<div class="stack-section" id="stack">
+  <div class="stack-inner">
+    <div class="section-header fade">
+      <div class="tag">// 02 — AI Stack</div>
+      <h2 class="section-title">Every Model. Every Platform.</h2>
+      <p class="section-sub">Fluent across the full LLM landscape — I know the strengths, limits, and sweet spots of each.</p>
+    </div>
+
+    <div class="model-grid fade">
+
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#d97706;"></div>
+        <div class="model-card-name">Claude Opus</div>
+        <div class="model-card-org">Anthropic</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#7c3aed;"></div>
+        <div class="model-card-name">Claude Sonnet</div>
+        <div class="model-card-org">Anthropic</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#2563eb;"></div>
+        <div class="model-card-name">Claude Code</div>
+        <div class="model-card-org">Anthropic</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#10b981;"></div>
+        <div class="model-card-name">GPT-4o</div>
+        <div class="model-card-org">OpenAI</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#10b981;"></div>
+        <div class="model-card-name">o3 / o1</div>
+        <div class="model-card-org">OpenAI</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#0ea5e9;"></div>
+        <div class="model-card-name">DeepSeek R1</div>
+        <div class="model-card-org">DeepSeek</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#f59e0b;"></div>
+        <div class="model-card-name">Grok</div>
+        <div class="model-card-org">xAI</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#4285f4;"></div>
+        <div class="model-card-name">Gemini</div>
+        <div class="model-card-org">Google</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#f97316;"></div>
+        <div class="model-card-name">Perplexity</div>
+        <div class="model-card-org">Perplexity AI</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#ec4899;"></div>
+        <div class="model-card-name">Kimi</div>
+        <div class="model-card-org">Moonshot AI</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#0078d4;"></div>
+        <div class="model-card-name">Copilot</div>
+        <div class="model-card-org">Microsoft</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#8b5cf6;"></div>
+        <div class="model-card-name">Manus</div>
+        <div class="model-card-org">Manus AI</div>
+      </div>
+      <div class="model-card">
+        <div class="model-card-dot" style="background:#22d3ee;"></div>
+        <div class="model-card-name">Comet</div>
+        <div class="model-card-org">Perplexity</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ── CAPABILITIES ── -->
+<section class="section" id="capabilities">
+  <div class="section-header fade">
+    <div class="tag">// 03 — Capabilities</div>
+    <h2 class="section-title">What I Bring to Your Business</h2>
+    <p class="section-sub">Technical depth meets business execution. I bridge the gap between AI capability and real-world deployment.</p>
+  </div>
+
+  <div class="caps-grid fade">
+
+    <div class="cap-card">
+      <div class="cap-icon">🤖</div>
+      <h4>AI Agent Development</h4>
+      <p>Design and deploy autonomous agents that execute tasks, make decisions, and operate 24/7 without human input.</p>
+      <div class="cap-skills">
+        <div class="cap-skill">
+          <span class="cap-skill-name">Agent Orchestration</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:95%"></div></div>
+          <span class="cap-pct">95%</span>
+        </div>
+        <div class="cap-skill">
+          <span class="cap-skill-name">Prompt Engineering</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:92%"></div></div>
+          <span class="cap-pct">92%</span>
+        </div>
+        <div class="cap-skill">
+          <span class="cap-skill-name">Multi-Agent Systems</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:85%"></div></div>
+          <span class="cap-pct">85%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-icon">⚙️</div>
+      <h4>Workflow Automation</h4>
+      <p>Build automation pipelines that eliminate manual work, connect systems, and scale operations without headcount.</p>
+      <div class="cap-skills">
+        <div class="cap-skill">
+          <span class="cap-skill-name">N8N / GHL</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:90%"></div></div>
+          <span class="cap-pct">90%</span>
+        </div>
+        <div class="cap-skill">
+          <span class="cap-skill-name">API Integration</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:88%"></div></div>
+          <span class="cap-pct">88%</span>
+        </div>
+        <div class="cap-skill">
+          <span class="cap-skill-name">Voice AI / Twilio</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:82%"></div></div>
+          <span class="cap-pct">82%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-icon">💻</div>
+      <h4>AI-Native Development</h4>
+      <p>Ship full-stack applications using AI as a co-pilot — faster, leaner, and with fewer blockers than traditional dev cycles.</p>
+      <div class="cap-skills">
+        <div class="cap-skill">
+          <span class="cap-skill-name">Replit / Vibe Code</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:93%"></div></div>
+          <span class="cap-pct">93%</span>
+        </div>
+        <div class="cap-skill">
+          <span class="cap-skill-name">Full Stack Apps</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:80%"></div></div>
+          <span class="cap-pct">80%</span>
+        </div>
+        <div class="cap-skill">
+          <span class="cap-skill-name">Self-Hosting / Infra</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:76%"></div></div>
+          <span class="cap-pct">76%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cap-card">
+      <div class="cap-icon">🏢</div>
+      <h4>Business AI Integration</h4>
+      <p>Identify where AI creates the most value in a business — then implement it. Strategy + execution, not just advice.</p>
+      <div class="cap-skills">
+        <div class="cap-skill">
+          <span class="cap-skill-name">AI Strategy</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:92%"></div></div>
+          <span class="cap-pct">92%</span>
+        </div>
+        <div class="cap-skill">
+          <span class="cap-skill-name">Process Automation</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:90%"></div></div>
+          <span class="cap-pct">90%</span>
+        </div>
+        <div class="cap-skill">
+          <span class="cap-skill-name">ROI Identification</span>
+          <div class="cap-bar"><div class="cap-bar-fill" style="width:88%"></div></div>
+          <span class="cap-pct">88%</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ── WHAT I OFFER ── -->
+<section class="section">
+  <div class="section-header fade">
+    <div class="tag">// 04 — Value</div>
+    <h2 class="section-title">What a CAO Does</h2>
+    <p class="section-sub">When a business hires a Chief Agent Officer, here's what they actually get.</p>
+  </div>
+
+  <div class="offer-grid fade">
+    <div class="offer-item">
+      <div class="offer-num">01</div>
+      <h4>Diagnosis</h4>
+      <p>Identify the highest-value automation opportunities inside a business. Where is time being wasted? Where can AI agents replace manual effort?</p>
+    </div>
+    <div class="offer-item">
+      <div class="offer-num">02</div>
+      <h4>Architecture</h4>
+      <p>Design the AI systems, agent workflows, and integration layers that make the vision real. No vendor lock-in. Stack chosen for the problem.</p>
+    </div>
+    <div class="offer-item">
+      <div class="offer-num">03</div>
+      <h4>Deployment</h4>
+      <p>Build and ship it. I don't just advise — I implement. From prompt to production, I see it through to a working system.</p>
+    </div>
+    <div class="offer-item">
+      <div class="offer-num">04</div>
+      <h4>Optimisation</h4>
+      <p>AI systems need iteration. Monitor performance, tune prompts, upgrade models, expand capabilities as the business grows.</p>
+    </div>
+  </div>
+</section>
+
+<div class="hr"></div>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+  <div class="section-header fade">
+    <div class="tag">// 05 — Philosophy</div>
+    <h2 class="section-title">Why I Do This</h2>
+  </div>
+
+  <div class="manifesto fade">
+    <div class="manifesto-quote">
+      "AI isn't something you bolt onto a business.
+      It's <em>a new way of operating one.</em>"
+    </div>
+    <div class="manifesto-body">
+      <p>
+        I've spent the last few years not just learning AI — <strong>using it to build real things</strong>.
+        Payment systems. Autonomous agents. Voice-powered sales pipelines. Intelligence dashboards.
+        The result is I know what works, what breaks, and how to get from zero to deployed without burning months on theory.
+      </p>
+      <p>
+        Most businesses approaching AI get stuck at the strategy layer. They read the articles, attend the webinars,
+        and buy the subscriptions. But nothing ships. That's the gap I close.
+        <strong>I translate AI capability into working systems.</strong>
+      </p>
+      <p>
+        As a Chief Agent Officer, I'm not here to talk about what's possible. I'm here to build it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section" id="contact">
+  <div class="section-header fade" style="text-align:center; max-width:600px; margin:0 auto;">
+    <div class="tag">// 06 — Contact</div>
+    <h2 class="section-title">Let's Build Something</h2>
+    <p class="section-sub" style="max-width:100%;">
+      Looking for a Chief Agent Officer who ships? Let's talk.
+    </p>
+  </div>
+
+  <div class="fade" style="text-align:center; margin-top:2.5rem;">
+    <a href="mailto:isiah.13@proton.me" class="btn btn-primary" style="font-size:1rem; padding:1rem 2.5rem;">
+      isiah.13@proton.me →
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-name">Isiah.</div>
+  <div class="footer-sub">Brisbane, AU · AI Builder · Chief Agent Officer · 2026</div>
+</footer>
+
+<script>
+  // Cursor glow
+  const glow = document.getElementById('glow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
